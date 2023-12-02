@@ -18,7 +18,7 @@ E:E'+'E
 %%
 void main()
 {
-    printf("\nEnter Expression: ");
+    printf("Enter Expression: ");
     yyparse();
     if(flag==0)
         printf("\nEntered expression is Valid\n\n");
