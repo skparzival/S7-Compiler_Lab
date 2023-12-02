@@ -50,8 +50,6 @@ void main()
       scanf("%d",&finalstate[i]);
     printf("Enter no. of transitions: ");
     scanf("%d",&notransition);
-    printf("NOTE:- [Transition is in the form–> qno alphabet qno]\n",notransition);
-    printf("NOTE:- [States number must be greater than zero]\n");
     printf("\nEnter transitions:\n");
     for(i=0;i<notransition;i++)
     {
