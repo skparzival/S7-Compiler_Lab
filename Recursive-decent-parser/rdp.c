@@ -191,5 +191,6 @@ int main()
         strcpy(op,tmp);
         printf("\nE=%-25s",op);
     }
+    printf("\n");
     return 0;
 }
