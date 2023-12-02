@@ -25,7 +25,6 @@ void main()
           getchar();
           printf("NOTE:- [ use letter e as epsilon]\n");
           printf("NOTE:- [e must be last character ,if it is present]\n");
-
           printf("\nEnter alphabets: \n");
           for(i=0;i<noalpha;i++)
          {
@@ -44,8 +43,6 @@ void main()
                 scanf("%d",&finalstate[i]);
          printf("Enter no. of transition: ");
         scanf("%d",&notransition);
-        printf("NOTE:- [Transition is in the form--> qno   alphabet   qno]\n",notransition);
-        printf("NOTE:- [States number must be greater than zero]\n");
         printf("\nEnter transitions: \n");
         for(i=0;i<notransition;i++)
         {
