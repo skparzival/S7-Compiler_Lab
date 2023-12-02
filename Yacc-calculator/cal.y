@@ -18,11 +18,12 @@ E:E'+'E {res=$1+$3;}
 %%
 void main()
 {
-    printf("\nEnter Expression: ");
+    printf("Enter Expression: ");
     yyparse();
-    if(flag==0) {
-    printf("\nEntered expression is Valid\n\n");
-    printf("Result: %d\n",res);}
+    if(flag==0) 
+    {
+        printf("Result: %d\n",res);
+    }
 }
 void yyerror()
 {

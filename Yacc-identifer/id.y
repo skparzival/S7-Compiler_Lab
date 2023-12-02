@@ -1,28 +1,26 @@
 %{
-    #include<stdio.h>
-    int valid=1;
+#include <stdio.h>
+void yyerror();
+int yylex();
+int flag = 0;
 %}
 
-%token digit letter
+%token IDENTIFIER
 
 %%
-start : letter s
-s :     letter s | digit s | ;
+E : IDENTIFIER;
 %%
 
-int yyerror()
+void main()
 {
-    printf("\nIts not an identifier!\n");
-    valid=0;
-    return 0;
+    printf("Enter a valid identifier: ");
+    yyparse();
+    if (flag == 0)
+        printf("\nValid Identifier!\n");
 }
 
-int main()
+void yyerror()
 {
-    printf("\nEnter identifier: ");
-    yyparse();
-    if(valid)
-    {
-        printf("\nIt is an identifier!\n");
-    }
+    printf("\nInvalid Identifier!\n\n");
+    flag = 1;
 }
