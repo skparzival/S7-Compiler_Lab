@@ -24,103 +24,103 @@ static int eclosure[20][20]={0};
 struct node1 hash[20];
 struct node * transition[20][20]={NULL};
 
-void main()
+int main()
 {
-    int i,j,k,m,t,n,l;
-    struct node *temp;
-    struct node1 newstate={0},tmpstate={0};
-    printf("NOTE:- [ use letter e as epsilon]\n");
-    printf("NOTE:- [e must be last character ,if it is present]\n");
-    printf("Enter no. of alphabets and alphabets: \n");
-    scanf("%d",&noalpha);
+  int i,j,k,m,t,n,l;
+  struct node *temp;
+  struct node1 newstate={0},tmpstate={0};
+  printf("Enter no. of inputs and inputs: ");
+  scanf("%d",&noalpha);
+  getchar();
+  for(i=0;i<noalpha;i++)
+  {
+    alphabet[i]=getchar();
     getchar();
-    for(i=0;i<noalpha;i++)
+  }
+  printf("Enter the no. of states: ");
+  scanf("%d",&nostate);
+  printf("Enter the start state: ");
+  scanf("%d",&start);
+  printf("Enter the no. of final states: ");
+  scanf("%d",&nofinal);
+  printf("Enter the final states:\n");
+  for(i=0;i<nofinal;i++)
+    scanf("%d",&finalstate[i]);
+  printf("Enter no. of transitions: ");
+  scanf("%d",&notransition);
+  printf("\nEnter transitions:\n");
+  for(i=0;i<notransition;i++)
+  {
+    scanf("%d %c%d",&r,&c,&s);
+    insert(r,c,s);
+  }
+  for(i=0;i<20;i++)
+  {
+    for(j=0;j<20;j++)
+      hash[i].nst[j]=0;
+  }
+  complete=-1;
+  i=-1;
+  printf("Transitions of DFA\n");
+  newstate.nst[start]=start;
+  insertdfastate(newstate);
+  while(i!=complete)
+  {
+    i++;
+    newstate=hash[i];
+    for(k=0;k<noalpha;k++)
     {
-      alphabet[i]=getchar();
-      getchar();
-    }
-    printf("Enter the no. of states: ");
-    scanf("%d",&nostate);
-    printf("Enter the start state: ");
-    scanf("%d",&start);
-    printf("Enter the no. of final states: ");
-    scanf("%d",&nofinal);
-    printf("Enter the final states:\n");
-    for(i=0;i<nofinal;i++)
-      scanf("%d",&finalstate[i]);
-    printf("Enter no. of transitions: ");
-    scanf("%d",&notransition);
-    printf("\nEnter transitions:\n");
-    for(i=0;i<notransition;i++)
-    {
-      scanf("%d %c%d",&r,&c,&s);
-      insert(r,c,s);
-    }
-    for(i=0;i<20;i++)
-    {
-      for(j=0;j<20;j++)
-        hash[i].nst[j]=0;
-    }
-    complete=-1;
-    i=-1;
-    printf("Transitions of DFA\n");
-    newstate.nst[start]=start;
-    insertdfastate(newstate);
-    while(i!=complete)
-    {
-      i++;
-      newstate=hash[i];
-      for(k=0;k<noalpha;k++)
+      c=0;
+      for(j=1;j<=nostate;j++)
+        set[j]=0;
+      for(j=1;j<=nostate;j++)
       {
-        c=0;
-        for(j=1;j<=nostate;j++)
-          set[j]=0;
-        for(j=1;j<=nostate;j++)
+        l=newstate.nst[j];
+        if(l!=0)
         {
-          l=newstate.nst[j];
-          if(l!=0)
-          {
-             temp=transition[l][k];
-             while(temp!=NULL)
-             {
-                if(set[temp->st]==0)
-                {
-                   c++;
-                   set[temp->st]=temp->st;
-                }
-                temp=temp->link;
-             }
-          }
-        }
-        printf("\n");
-        if(c!=0)
-        {
-          for(m=1;m<=nostate;m++)
-          tmpstate.nst[m]=set[m];
-          insertdfastate(tmpstate);
-          printnewstate(newstate);
-          printf("%c\t",alphabet[k]);
-          printnewstate(tmpstate);
-          printf("\n");
-        }
-        else
-        {
-          printnewstate(newstate);
-          printf("%c\t", alphabet[k]);
-          printf("NULL\n");
+            temp=transition[l][k];
+            while(temp!=NULL)
+            {
+              if(set[temp->st]==0)
+              {
+                  c++;
+                  set[temp->st]=temp->st;
+              }
+              temp=temp->link;
+            }
         }
       }
+      printf("\n");
+      if(c!=0)
+      {
+        for(m=1;m<=nostate;m++)
+        tmpstate.nst[m]=set[m];
+        insertdfastate(tmpstate);
+        printnewstate(newstate);
+        printf("%c\t",alphabet[k]);
+        printnewstate(tmpstate);
+        printf("\n");
+      }
+      else
+      {
+        printnewstate(newstate);
+        printf("%c\t", alphabet[k]);
+        printf("NULL\n");
+      }
     }
-    printf("\nStates of DFA:\n");
-    for(i=0;i<=complete;i++)
-      printnewstate(hash[i]);  
-    printf("\nAlphabets:\n");
-    for(i=0;i<noalpha;i++)
-      printf("%c\t",alphabet[i]);
-    printf("\nStart State:\n");
-    printf("q%d",start);
-    printf("\nFinal states:\n");
-    findfinalstate();
+  }
+  printf("\nStates of DFA:\n");
+  for(i=0;i<=complete;i++)
+    printnewstate(hash[i]);  
+  printf("\nAlphabets: ");
+  for(i=0;i<noalpha;i++)
+    printf("%c\t",alphabet[i]);
+  printf("\nStart State: ");
+  printf("q%d",start);
+  printf("\nFinal states: ");
+  findfinalstate();
+  printf("\n");
+  return 0;
 }
 
 int insertdfastate(struct node1 newstate)
