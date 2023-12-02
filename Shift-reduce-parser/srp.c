@@ -7,12 +7,12 @@ void check();
 
 int main()
 {
-    puts("GRAMMAR is E->E+E \n E->E*E \n E->(E) \n E->id");
-    puts("enter input string ");
+    printf("GRAMMAR\n E->E+E \n E->E*E \n E->(E) \n E->id");
+    printf("\nEnter input string: ");
     scanf("%s",a);
     c=strlen(a);
     strcpy(act,"SHIFT->");
-    puts("stack \t input \t action");
+    printf("\nStack \t Input \t Action");
     for(k=0,i=0; j<c; k++,i++,j++)
     {
         if(a[j]=='i' && a[j+1]=='d')
@@ -30,10 +30,11 @@ int main()
             stk[i]=a[j];
             stk[i+1]='\0';
             a[j]=' ';
-            printf("\n$%s\t%s$\t%ssymbols",stk,a,act);
+            printf("\n$%s\t%s$\t%sSymbols",stk,a,act);
             check();
         }
     }
+    printf("\n");
     return 0;
 }
 
