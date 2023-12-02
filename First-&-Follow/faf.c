@@ -11,14 +11,14 @@ int main()
 {
   int i,z;
   char c,ch;
-  printf("Enter the no. of productions: ");
+  printf("Enter no. of productions: ");
   scanf("%d",&n);
   printf("Enter the productions:\n");
   for(i=0;i<n;i++)
     scanf("%s%c",a[i],&ch);
   do{
     m=0;
-    printf("Enter the elements whose first & follow is to be found: ");
+    printf("Enter the element whose first & follow is to be found: ");
     scanf("%c",&c);
     first(c);
     printf("First(%c)={",c);
