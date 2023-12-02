@@ -27,9 +27,9 @@ int main()
     char state[3];
     int end,i=0,n,k=0;
     char state1[3],input[3],state2[3];
-    printf("\nEnter the no. of states: ");
+    printf("Enter the no. of states: ");
     scanf("%d",&n);
-    printf("\nEnter the states\n");
+    printf("Enter the states\n");
     for(k=0;k<n;k++)
     {
         scanf("%s",states[k]);
