@@ -29,7 +29,7 @@ int main()
     char state1[3],input[3],state2[3];
     printf("Enter the no. of states: ");
     scanf("%d",&n);
-    printf("Enter the states\n");
+    printf("Enter the states: ");
     for(k=0;k<n;k++)
     {
         scanf("%s",states[k]);
