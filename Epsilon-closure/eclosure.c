@@ -24,7 +24,7 @@ int main()
 {
     FILE *INPUT;
     INPUT=fopen("input.dat","r");
-    char state[3],state1[3],input[3],state2[3];;
+    char state[3],state1[3],input[3],state2[3];
     int end,i=0,n,k=0;
     printf("Enter the no. of states: ");
     scanf("%d",&n);
