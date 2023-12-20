@@ -41,8 +41,7 @@ void input()
 
 void constant()
 {
-	int i;
-	int op1,op2,res;
+	int i,op1,op2,res;
 	char op,res1[5];
 	for(i=0;i<n;i++){
 		if(isdigit(arr[i].op1[0])&&isdigit(arr[i].op2[0])||strcmp(arr[i].op,"=")==0)
