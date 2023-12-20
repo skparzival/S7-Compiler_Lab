@@ -24,9 +24,8 @@ int main()
 {
     FILE *INPUT;
     INPUT=fopen("input.dat","r");
-    char state[3];
+    char state[3],state1[3],input[3],state2[3];;
     int end,i=0,n,k=0;
-    char state1[3],input[3],state2[3];
     printf("Enter the no. of states: ");
     scanf("%d",&n);
     printf("Enter the states: ");
@@ -34,7 +33,7 @@ int main()
     {
         scanf("%s",states[k]);
     }
-    for( k=0;k<n;k++)
+    for(k=0;k<n;k++)
     {
         i=0;
         strcpy(state,states[k]);
@@ -42,17 +41,17 @@ int main()
         add_state(state,i++);
         while(1)
         {
-            end = fscanf(INPUT,"%s%s%s",state1,input,state2);
-            if (end == EOF )
+            end=fscanf(INPUT,"%s%s%s",state1,input,state2);
+            if(end==EOF)
             {
                 break;
             }
-            if( strcmp(state,state1) == 0 )
+            if(strcmp(state,state1)==0)
             {
-                if( strcmp(input,"e") == 0 ) 
+                if(strcmp(input,"e")==0) 
                 {
                     add_state(state2,i++);
-                    strcpy(state, state2);
+                    strcpy(state,state2);
                 }
             }
         }
